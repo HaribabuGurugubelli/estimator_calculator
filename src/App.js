@@ -1,5 +1,8 @@
 import "./App.css";
 import React, { useState } from "react";
+import * as htmlToImage from "html-to-image";
+import { toPng, toJpeg, toBlob, toPixelData, toSvg } from "html-to-image";
+import { jsPDF } from "jspdf";
 
 function App() {
   const [currency, setCurrency] = useState();
@@ -77,8 +80,24 @@ function App() {
     }
   }
 
+  const PrintPdf = () => {
+    console.log("Print function called.");
+    htmlToImage
+      .toPng(document.getElementById("myPage"), { quality: 0.95 })
+      .then(function (dataUrl) {
+        var link = document.createElement("a");
+        link.download = "my-image-name.jpeg";
+        const pdf = new jsPDF();
+        const imgProps = pdf.getImageProperties(dataUrl);
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+        pdf.addImage(dataUrl, "PNG", 0, 0, pdfWidth, pdfHeight);
+        pdf.save("Result.pdf");
+      });
+  };
+
   return (
-    <div className="App">
+    <div className="App" id={"myPage"}>
       <header className="header p-3">
         <h2>Estimator Calculator</h2>
       </header>
@@ -280,6 +299,13 @@ function App() {
           </tbody>
         </table>
       </div>
+      <button
+        type="button"
+        className="btn btn-primary"
+        onClick={() => PrintPdf()}
+      >
+        Primary
+      </button>
     </div>
   );
 }
