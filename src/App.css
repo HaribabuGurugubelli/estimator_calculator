@@ -45,3 +45,8 @@
 .main-body {
   max-width: 60%;
 }
+
+.chart{
+  max-width: 60vw;
+  margin-left: 18%;
+}

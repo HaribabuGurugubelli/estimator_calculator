@@ -35,7 +35,7 @@ export const options = {
     },
     title: {
       display: true,
-      text: "Chart.js Line Chart",
+      text: "Savings & Expenses for current year",
     },
   },
 };
@@ -355,17 +355,18 @@ function App() {
           </tbody>
         </table>
       </div>
+
+      <div className="mt-5 chart">
+        <Line options={options} data={data} />
+      </div>
+
       <button
         type="button"
-        className="btn btn-primary"
+        className="btn btn-primary mt-5 mb-5"
         onClick={() => PrintPdf()}
       >
         Print Result
       </button>
-
-      <div>
-        <Line options={options} data={data} />
-      </div>
     </div>
   );
 }
