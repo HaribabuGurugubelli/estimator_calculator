@@ -7,9 +7,12 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "bootstrap": "^5.2.2",
+    "canvasjs-react-charts": "^1.0.5",
+    "chart.js": "^4.0.1",
     "html-to-image": "^1.10.8",
     "jspdf": "^2.5.1",
     "react": "^18.2.0",
+    "react-chartjs-2": "^4.3.1",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
@@ -37,5 +40,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.6.0",
+    "faker": "^6.6.6"
   }
 }
